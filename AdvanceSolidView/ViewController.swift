@@ -70,12 +70,12 @@ extension ViewController: RenderCellDelegate {
             rendercell.updateView(type: .Overlay)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 let indexP = IndexPath.init(row: cellNo, section: 0)
-                self.didShootSelector(index: indexP, cell: cell)
+                self.didShootSelector(index: indexP, cell: cell, tag: rendercell.currentData.tag)
             }
         }
     }
     
-    @objc func didShootSelector(index:IndexPath, cell:UITableViewCell) {
+    @objc func didShootSelector(index:IndexPath, cell:UITableViewCell, tag: Int) {
         
         
         //dataSource[index.row].inProgress = false
@@ -86,17 +86,31 @@ extension ViewController: RenderCellDelegate {
         
         //let datatoberemoved = dataSource.remove(at: index.row)
         
-        
-        let castedcell = cell as! RenderCell1
-        for cell in baseTableView.visibleCells {
+         let matchedCell = cell as! RenderCell1
+     //   let castedcell = cell as! RenderCell1
+        for data in dataSource {
             
-            let matchedCell = cell as! RenderCell1
+           
             
-            if matchedCell.data.tag == castedcell.data.tag {
+            if tag == data.tag {
                 print("INDEX ROW WITH \(String(describing: matchedCell.data.tag)) has been DELETED")
-                let indexPath = baseTableView.indexPath(for: castedcell)
-                dataSource.remove(at: indexPath!.row)
-                baseTableView.deleteRows(at: [indexPath!], with:.none)
+                let indexPath = baseTableView.indexPath(for: matchedCell)
+                let scopecell = baseTableView.cellForRow(at: IndexPath.init(item: tag, section: 0))
+                dataSource.remove(at: (indexPath?.row)!)
+                if (scopecell != nil) {
+                    if baseTableView.visibleCells.contains(scopecell!) {
+                        baseTableView.deleteRows(at: [indexPath!], with: .none)
+                    } else {
+                        baseTableView.reloadData()
+                    }
+                    
+                } else {
+                    baseTableView.reloadData()
+                }
+                
+                
+                break
+               // baseTableView.deleteRows(at: [indexPath!], with: .none)
             }
         
         }
