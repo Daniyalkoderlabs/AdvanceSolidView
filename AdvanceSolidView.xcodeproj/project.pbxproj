@@ -12,6 +12,8 @@
 		2E6467BE2170A7DA00589C0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6467BC2170A7DA00589C0E /* Main.storyboard */; };
 		2E6467C02170A7DC00589C0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6467BF2170A7DC00589C0E /* Assets.xcassets */; };
 		2E6467C32170A7DC00589C0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6467C12170A7DC00589C0E /* LaunchScreen.storyboard */; };
+		2E6467CC2170A81500589C0E /* RenderCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6467CA2170A81500589C0E /* RenderCell1.swift */; };
+		2E6467CD2170A81500589C0E /* RenderCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E6467CB2170A81500589C0E /* RenderCell1.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		2E6467BF2170A7DC00589C0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E6467C22170A7DC00589C0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E6467C42170A7DC00589C0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E6467CA2170A81500589C0E /* RenderCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderCell1.swift; sourceTree = "<group>"; };
+		2E6467CB2170A81500589C0E /* RenderCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RenderCell1.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				2E6467BF2170A7DC00589C0E /* Assets.xcassets */,
 				2E6467C12170A7DC00589C0E /* LaunchScreen.storyboard */,
 				2E6467C42170A7DC00589C0E /* Info.plist */,
+				2E6467CA2170A81500589C0E /* RenderCell1.swift */,
+				2E6467CB2170A81500589C0E /* RenderCell1.xib */,
 			);
 			path = AdvanceSolidView;
 			sourceTree = "<group>";
@@ -123,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E6467C32170A7DC00589C0E /* LaunchScreen.storyboard in Resources */,
+				2E6467CD2170A81500589C0E /* RenderCell1.xib in Resources */,
 				2E6467C02170A7DC00589C0E /* Assets.xcassets in Resources */,
 				2E6467BE2170A7DA00589C0E /* Main.storyboard in Resources */,
 			);
@@ -135,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6467CC2170A81500589C0E /* RenderCell1.swift in Sources */,
 				2E6467BB2170A7DA00589C0E /* ViewController.swift in Sources */,
 				2E6467B92170A7DA00589C0E /* AppDelegate.swift in Sources */,
 			);
