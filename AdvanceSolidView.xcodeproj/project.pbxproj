@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E019BAC2174926C0096DD3B /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2E49EA2721747B91001D3F5D /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 		2E49EA2921747CF9001D3F5D /* AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
 		2E49EA2E21748039001D3F5D /* AppDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataSource.swift; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 				2E6467C42170A7DC00589C0E /* Info.plist */,
 				2E6467CA2170A81500589C0E /* RenderCell1.swift */,
 				2E6467CB2170A81500589C0E /* RenderCell1.xib */,
+				2E019BAC2174926C0096DD3B /* MyPlayground.playground */,
 			);
 			path = AdvanceSolidView;
 			sourceTree = "<group>";

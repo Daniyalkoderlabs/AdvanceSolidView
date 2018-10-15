@@ -11,7 +11,7 @@ import Foundation
 class AppDataSource {
     
     static func fetchRenderData() -> [RenderData] {
-        var dataSource: [RenderData] =
+        let dataSource: [RenderData] =
             [
                 RenderData.init(inProg: false, data: nil, tag: 0)
                 ,RenderData.init(inProg: false, data: nil, tag: 1)
