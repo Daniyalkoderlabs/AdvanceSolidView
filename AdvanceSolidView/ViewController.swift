@@ -22,7 +22,7 @@ struct RenderData {
 class ViewController: UIViewController {
     var tableCells: [RenderCell1] = []
     @IBOutlet weak var baseTableView: UITableView!
-    var dataSource: [RenderData] = [RenderData.init(inProg: false, data: nil, tag: 0),RenderData.init(inProg: false, data: nil, tag: 1),RenderData.init(inProg: false, data: nil, tag: 2),RenderData.init(inProg: false, data: nil, tag: 3),RenderData.init(inProg: false, data: nil, tag: 4),RenderData.init(inProg: false, data: nil, tag: 5),RenderData.init(inProg: false, data: nil, tag: 6),RenderData.init(inProg: false, data: nil, tag: 7),RenderData.init(inProg: false, data: nil, tag: 8)]
+    var dataSource: [RenderData] = [RenderData.init(inProg: false, data: nil, tag: 0),RenderData.init(inProg: false, data: nil, tag: 1),RenderData.init(inProg: false, data: nil, tag: 2),RenderData.init(inProg: false, data: nil, tag: 3),RenderData.init(inProg: false, data: nil, tag: 4),RenderData.init(inProg: false, data: nil, tag: 5),RenderData.init(inProg: false, data: nil, tag: 6),RenderData.init(inProg: false, data: nil, tag: 7),RenderData.init(inProg: false, data: nil, tag: 8),RenderData.init(inProg: false, data: nil, tag: 9),RenderData.init(inProg: false, data: nil, tag: 10),RenderData.init(inProg: false, data: nil, tag: 11),RenderData.init(inProg: false, data: nil, tag: 12)]
     
     
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         
-        guard let isCell = Bundle.main.loadNibNamed("RenderCell1", owner: self, options: nil)?.first as? RenderCell1 else { //tableView.dequeueReusableCell(withIdentifier: "rendercell1") as? RenderCell1 else {
+        guard let isCell = tableView.dequeueReusableCell(withIdentifier: "rendercell1") as? RenderCell1 else { //tableView.dequeueReusableCell(withIdentifier: "rendercell1") as? RenderCell1 else {
             
             fatalError()
             
@@ -100,49 +100,13 @@ extension ViewController: RenderCellDelegate {
             
             print("INDEX ROW WITH \(String(describing: index)) has been DELETED")
             dataSource.remove(at: index)
-            baseTableView.reloadData()
+            
+            let indexPath = IndexPath.init(item: index, section: 0)
+            
+            
+            baseTableView.deleteRows(at: [indexPath], with: .none)
+           // baseTableView.reloadData()
         }
-        
-        
-        //dataSource[index.row].inProgress = false
-    
-        ///castedCell.updateView(type: .NonOverLay)   //updateView or Delete Cell here
-        
-        
-        
-        //let datatoberemoved = dataSource.remove(at: index.row)
-        
-       /*  let matchedCell = cell as! RenderCell1
-     //   let castedcell = cell as! RenderCell1
-        for data in dataSource {
-            
-           
-            
-            if tag == data.tag {
-                
-                let indexPath = baseTableView.indexPath(for: matchedCell)
-                let scopecell = baseTableView.cellForRow(at: IndexPath.init(item: tag, section: 0))
-                dataSource.remove(at: (tag))
-                if (scopecell != nil) {
-                    if baseTableView.visibleCells.contains(scopecell!) {
-                        baseTableView.deleteRows(at: [indexPath!], with: .none)
-                    } else {
-                        baseTableView.reloadData()
-                    }
-                    
-                } else {
-                    baseTableView.reloadData()
-                }
-                
-                
-                break
-               // baseTableView.deleteRows(at: [indexPath!], with: .none)
-            }
-        
-        }*/
-        
-        
-        //baseTableView.reloadData()
         
     }
     
