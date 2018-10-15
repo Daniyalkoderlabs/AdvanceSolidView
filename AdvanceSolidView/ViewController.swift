@@ -62,6 +62,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ViewController: RenderCellDelegate {
+    
     func tapDelete(cell: UITableViewCell, currentType: RenderCellType, cellNo: Int, data: RenderData) {
         if currentType == .NonOverLay {
             let indexPath = baseTableView.indexPath(for: cell)
@@ -74,11 +75,6 @@ extension ViewController: RenderCellDelegate {
             }
         }
     }
-    
-    func tapDelete(cell: UITableViewCell, currentType: RenderCellType, cellNo: Int) {
-       
-    }
-    
     
     func getIndex(data:RenderData) -> Int? {
         
