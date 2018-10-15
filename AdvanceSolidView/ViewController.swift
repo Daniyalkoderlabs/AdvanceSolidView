@@ -8,6 +8,8 @@
 
 import UIKit
 
+protocol ViewControllerProtocol:UITableViewDataSource, UITableViewDelegate, RenderCellDelegate { }
+
 struct RenderData {
     var inProgress:Bool!
     var cdata:[String:AnyObject]?
@@ -34,7 +36,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension ViewController: ViewControllerProtocol {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         
@@ -61,7 +63,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension ViewController: RenderCellDelegate {
+extension ViewController {
     
     func tapDelete(cell: UITableViewCell, currentType: RenderCellType, cellNo: Int, data: RenderData) {
         if currentType == .NonOverLay {
@@ -78,6 +80,10 @@ extension ViewController: RenderCellDelegate {
     
     func getIndex(data:RenderData) -> Int? {
         
+      // let requiredIndex =  dataSource.filter { (currentD) -> Bool in
+      //      currentD.tag == data.tag
+      //  }
+    
         for (index,element) in dataSource.enumerated() {
             if element.tag == data.tag {
                 return index
