@@ -38,7 +38,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         
-        guard let isCell = tableView.dequeueReusableCell(withIdentifier: "rendercell1") as? RenderCell1 else {
+        guard let isCell = Bundle.main.loadNibNamed("RenderCell1", owner: self, options: nil)?.first as? RenderCell1 else { //tableView.dequeueReusableCell(withIdentifier: "rendercell1") as? RenderCell1 else {
             
             fatalError()
             
@@ -62,7 +62,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension ViewController: RenderCellDelegate {
-    func tapDelete(cell: UITableViewCell, currentType: RenderCellType, cellNo: Int) {
+    func tapDelete(cell: UITableViewCell, currentType: RenderCellType, cellNo: Int, data: RenderData) {
         if currentType == .NonOverLay {
             let indexPath = baseTableView.indexPath(for: cell)
             dataSource[indexPath!.row].inProgress = true
@@ -70,12 +70,38 @@ extension ViewController: RenderCellDelegate {
             rendercell.updateView(type: .Overlay)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 let indexP = IndexPath.init(row: cellNo, section: 0)
-                self.didShootSelector(index: indexP, cell: cell, tag: rendercell.currentData.tag)
+                self.didShootSelector(index: indexP, cell: cell, tag: rendercell.currentData.tag, data: data as AnyObject)
             }
         }
     }
     
-    @objc func didShootSelector(index:IndexPath, cell:UITableViewCell, tag: Int) {
+    func tapDelete(cell: UITableViewCell, currentType: RenderCellType, cellNo: Int) {
+       
+    }
+    
+    
+    func getIndex(data:RenderData) -> Int? {
+        
+        for (index,element) in dataSource.enumerated() {
+            if element.tag == data.tag {
+                return index
+            }
+            
+        }
+        return nil
+        
+    }
+    
+    @objc func didShootSelector(index:IndexPath, cell:UITableViewCell, tag: Int, data:AnyObject) {
+        
+        
+        let castedRenderObj: RenderData = data as! RenderData
+        if let index = getIndex(data: castedRenderObj) {
+            
+            print("INDEX ROW WITH \(String(describing: index)) has been DELETED")
+            dataSource.remove(at: index)
+            baseTableView.reloadData()
+        }
         
         
         //dataSource[index.row].inProgress = false
@@ -86,17 +112,17 @@ extension ViewController: RenderCellDelegate {
         
         //let datatoberemoved = dataSource.remove(at: index.row)
         
-         let matchedCell = cell as! RenderCell1
+       /*  let matchedCell = cell as! RenderCell1
      //   let castedcell = cell as! RenderCell1
         for data in dataSource {
             
            
             
             if tag == data.tag {
-                print("INDEX ROW WITH \(String(describing: matchedCell.data.tag)) has been DELETED")
+                
                 let indexPath = baseTableView.indexPath(for: matchedCell)
                 let scopecell = baseTableView.cellForRow(at: IndexPath.init(item: tag, section: 0))
-                dataSource.remove(at: (indexPath?.row)!)
+                dataSource.remove(at: (tag))
                 if (scopecell != nil) {
                     if baseTableView.visibleCells.contains(scopecell!) {
                         baseTableView.deleteRows(at: [indexPath!], with: .none)
@@ -113,12 +139,13 @@ extension ViewController: RenderCellDelegate {
                // baseTableView.deleteRows(at: [indexPath!], with: .none)
             }
         
-        }
+        }*/
         
         
         //baseTableView.reloadData()
         
     }
+    
     
     
     

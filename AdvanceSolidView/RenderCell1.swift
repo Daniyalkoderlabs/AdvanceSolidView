@@ -15,7 +15,7 @@ enum RenderCellType: Int {
 
 protocol RenderCellDelegate {
     
-    func tapDelete(cell:UITableViewCell, currentType:RenderCellType, cellNo:Int)
+    func tapDelete(cell:UITableViewCell, currentType:RenderCellType, cellNo:Int, data:RenderData)
 }
 
 class RenderCell1: UITableViewCell {
@@ -46,7 +46,7 @@ class RenderCell1: UITableViewCell {
     }
     
     @IBAction func didTappedDelete(_ sender: UIButton) {
-        self.delegate?.tapDelete(cell: self, currentType: currentType, cellNo: self.tag)
+        self.delegate?.tapDelete(cell: self, currentType: currentType, cellNo: self.tag, data: currentData)
        // self.delegate?.didTapDelete(cell: self, currentType: currentType)
         
     }
