@@ -79,7 +79,7 @@
                 <outlet property="lblTitle" destination="qY9-SJ-Cq0" id="PV4-aj-MAr"/>
                 <outlet property="viewOverlay" destination="W67-2n-8FU" id="S8t-Sx-qlW"/>
             </connections>
-            <point key="canvasLocation" x="-361" y="-380"/>
+            <point key="canvasLocation" x="-510" y="-391"/>
         </tableViewCell>
     </objects>
 </document>

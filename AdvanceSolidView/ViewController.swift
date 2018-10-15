@@ -93,7 +93,7 @@ extension ViewController {
         let castedRenderObj: RenderData = data as! RenderData
         if let index = getIndex(data: castedRenderObj) {
             
-            print("INDEX ROW WITH \(String(describing: index)) has been DELETED")
+            print("INDEX ROW WITH \(String(describing: dataSource[index].tag)) has been DELETED")
             dataSource.remove(at: index)
             
             let indexPath = IndexPath.init(item: index, section: 0)
